@@ -1,7 +1,6 @@
 package executePageClasses;
 
 import java.awt.AWTException;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageClasses.HomePageClass;
