@@ -1,5 +1,6 @@
 package executePageClasses;
 
+import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageClasses.ExpenseCategoryPageClass;
@@ -13,7 +14,7 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	ExpenseCategoryPageClass ep;
 	
 	
-  @Test (priority = 0)
+  @Test (priority = 0,groups = {"group1"})
   public void verifyExpensecategoryPageIsDisplayedOrNot()
   {
 	  lp=new LoginPageClass(driver);
@@ -29,8 +30,8 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	  Assert.assertEquals(actual, expected);
   }
   
-  @Test (priority = 1)
-  public void verifyToCreateNewExpenseinExpensecategoryPage()
+  @Test (priority = 1,groups = {"create"})
+  public void verifyToCreateNewExpenseinExpensecategoryPage() throws IOException
   {
 	  lp=new LoginPageClass(driver);
 	  hp=new HomePageClass(driver);
@@ -40,15 +41,15 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	  hp.clickOnManageExpense();
 	  hp.clickonExpenseCategory();
 	  ep.clickOnNewTab();
-	  ep.sendKeystoTitleField("SampleTestData");
+	  ep.sendKeystoTitleField(ep.readExpense(1, 1));
 	  ep.clickOnSave();
 	  boolean actual=ep.isAlertMessageDisplayed();
 	  Assert.assertTrue(actual);
 	  	  
   }
   
-  @Test (priority = 2)
-  public void verifyToSearchCreatedExpenseinExpensecategoryPage()
+  @Test (priority = 2,groups = {"search"})
+  public void verifyToSearchCreatedExpenseinExpensecategoryPage() throws IOException
   {
 	  lp=new LoginPageClass(driver);
 	  hp=new HomePageClass(driver);
@@ -58,14 +59,14 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	  hp.clickOnManageExpense();
 	  hp.clickonExpenseCategory();
 	  ep.clickOnSearch();
-	  ep.sendKeystoTitleOfSearchElement("SampleTestData");
+	  ep.sendKeystoTitleOfSearchElement(ep.readExpense(1, 1));
 	  ep.clickOnSearchButton();
 	  boolean actualResult=ep.isSearchResultDisplayed();
 	  Assert.assertTrue(actualResult);
   }
   
   @Test (priority = 3)
-  public void verifyToDeleteCreatedExpenseinExpensecategoryPage()
+  public void verifyToDeleteCreatedExpenseinExpensecategoryPage() throws IOException
   {
 	  lp=new LoginPageClass(driver);
 	  hp=new HomePageClass(driver);
@@ -75,7 +76,7 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	  hp.clickOnManageExpense();
 	  hp.clickonExpenseCategory();
 	  ep.clickOnSearch();
-	  ep.sendKeystoTitleOfSearchElement("SampleTestData");
+	  ep.sendKeystoTitleOfSearchElement(ep.readExpense(1, 1));
 	  ep.clickOnSearchButton();
 	  ep.clickOnDelete();
 	  ep.acceptAlertMessageDisplayed();

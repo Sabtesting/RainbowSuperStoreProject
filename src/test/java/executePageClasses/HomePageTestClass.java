@@ -11,7 +11,7 @@ public class HomePageTestClass extends BaseClass{
 	HomePageClass hp;
 	
 	
-  @Test
+  @Test(groups = {"group1"})
   public void verifyAllTilesAreDisplayedOrNotInHomePage() 
     {
 	  lp=new LoginPageClass(driver);

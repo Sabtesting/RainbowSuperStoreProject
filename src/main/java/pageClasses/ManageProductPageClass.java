@@ -4,12 +4,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ExplicitWait;
+import utilities.FluentWaitClass;
 import utilities.GeneralUtilities;
 
 public class ManageProductPageClass {
 	
 	WebDriver driver;
 	GeneralUtilities gl = new GeneralUtilities();
+	ExplicitWait ew=new ExplicitWait();
+	FluentWaitClass fw=new FluentWaitClass();
 	
 	public ManageProductPageClass(WebDriver driver) 
 	{
@@ -31,11 +35,14 @@ public class ManageProductPageClass {
 	
 	public void clickonSearchTab()
 	{
+		ew.elementToBeClickableWait(driver, searchTab);
 		gl.clickElement(searchTab);
+		
 	}
 	
 	public void sendKeysToProductCode(String value)
 	{
+		ew.presenceofElementLocatedWait(driver,"(//*[@class='form-control'])[3]");
 		gl.sendKeysClickElement(productCode, value);
 	}
 	
@@ -46,6 +53,7 @@ public class ManageProductPageClass {
 	
 	public boolean isSearchResultDisplayed()
 	{
+		fw.visibilityOfWait(driver, searchResultDisplayed);
 		return gl.isDisplayedMethod(searchResultDisplayed);
 	}
 	

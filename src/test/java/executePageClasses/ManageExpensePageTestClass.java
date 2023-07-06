@@ -1,6 +1,8 @@
 package executePageClasses;
 
 import java.awt.AWTException;
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageClasses.HomePageClass;
@@ -14,7 +16,7 @@ public class ManageExpensePageTestClass extends BaseClass{
 	ManageExpensePageClass lep ;
 	
 	
-  @Test
+  @Test(groups = {"group1"})
   public void verifyManageExpensePageIsDisplayedOrNot() 
   {
 	  lp=new LoginPageClass(driver);
@@ -29,8 +31,8 @@ public class ManageExpensePageTestClass extends BaseClass{
 	  Assert.assertEquals(actual, expect);
   }
   
-  @Test
-  public void verifyToCreateNewManageExpense() throws AWTException 
+  @Test(groups = {"create"})
+  public void verifyToCreateNewManageExpense() throws AWTException, IOException 
   {
 	  lp=new LoginPageClass(driver);
 	  hp=new HomePageClass(driver);
@@ -40,13 +42,13 @@ public class ManageExpensePageTestClass extends BaseClass{
 	  hp.clickOnManageExpense();
 	  hp.clickonExpenseManage();
 	  lep.clickonNewTab();
-	  lep.selectValueinUserField(3);
-	  lep.selectValueinCategoryField("newitem");
+	  lep.selectValueinUserField(4);
+	  lep.selectValueinCategoryField(lep.readvalue(4, 2));
 	  lep.selectValueinOrderId(6);
 	  lep.selectValueinPurchaseId("7");
 	  lep.selectValueinExpenseType(2);
-	  lep.sendKeysofAmount("500");
-	  lep.sendKeysofRemarksTab("SampleTestData");;
+	  lep.sendKeysofAmount(lep.readIntvalue(6, 2));
+	  lep.sendKeysofRemarksTab(lep.readvalue(1, 1));;
 	//lep.uploadingOfFile(System.getProperty("user.dir")+"\\src\\test\\resources\\RobotFileUpload.txt");
 	 lep.sampleFileUpload();
 	  lep.submitonSaveButton();
@@ -55,7 +57,7 @@ public class ManageExpensePageTestClass extends BaseClass{
   
   }
   
-  @Test
+  @Test(groups = {"search"})
   public void verifyToSearchCreatedManageExpense() 
   {
 	  lp=new LoginPageClass(driver);
@@ -67,7 +69,7 @@ public class ManageExpensePageTestClass extends BaseClass{
 	  hp.clickonExpenseManage();
 	  lep.clickonSearchTab();
 	  lep.searchInUsersTab(3);
-	  lep.sendKeysofAmount("newitem ");
+	  lep.sendKeysofAmount("newitem");
 	  lep.submitonSearch();
 	  boolean actualresult=lep.isSearchResultDisplayed();
 	  Assert.assertTrue(actualresult);

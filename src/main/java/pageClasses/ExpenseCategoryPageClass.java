@@ -1,9 +1,11 @@
 package pageClasses;
 
+import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ExcelRead;
 import utilities.GeneralUtilities;
 
 public class ExpenseCategoryPageClass {
@@ -108,6 +110,12 @@ public class ExpenseCategoryPageClass {
 	public boolean isDeleteAlertMessageConfirmationDisplayed()
 	{
 		return gl.isDisplayedMethod(deleteAlertMessageConfirmation);
+	}
+	
+	public String readExpense(int row,int col) throws IOException
+	{
+		return ExcelRead.getStringData(row, col);
+		
 	}
 	
 }

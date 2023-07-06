@@ -3,13 +3,14 @@ package executePageClasses;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageClasses.LoginPageClass;
+import retryAnalyzer.RetryAnalyzer;
 
 public class LoginPageTestClass extends BaseClass {
 	
 	LoginPageClass lp;
 	
 	
-  @Test (dataProviderClass = DataProviderLogin.class,dataProvider = "SuccessfulLoginDp")
+  @Test (priority = 1, dataProviderClass = DataProviderLogin.class,dataProvider = "SuccessfulLoginDp",retryAnalyzer = RetryAnalyzer.class)
   public void verifySuccessfulLogin(String username,String pswd) 
   {
 	lp=new LoginPageClass(driver);
@@ -20,7 +21,7 @@ public class LoginPageTestClass extends BaseClass {
 		
   }
   
-  @Test (dataProviderClass = DataProviderLogin.class,dataProvider = "UnsuccessfulLoginDp")
+  @Test (priority = 0, dataProviderClass = DataProviderLogin.class,dataProvider = "UnsuccessfulLoginDp",retryAnalyzer = RetryAnalyzer.class)
   public void verifyUnSuccessfulLogin(String uname,String password) 
   {
 	  lp=new LoginPageClass(driver);
@@ -29,7 +30,7 @@ public class LoginPageTestClass extends BaseClass {
 	  Assert.assertTrue(actual);
   }
   
-  @Test
+  @Test (priority = 2,retryAnalyzer = RetryAnalyzer.class)
   public void verifyRememberMeCheckBoxIsSelectedByDefaultOrNot() 
   {
 	  lp=new LoginPageClass(driver);
