@@ -12,6 +12,7 @@
 			  <include name="group1"></include>
 			  <include name="create"></include>
 			  <include name="search"></include>
+			  <include name="delete"></include>
 			  <include name="close"></include>
 		  </run>
 	  </groups>

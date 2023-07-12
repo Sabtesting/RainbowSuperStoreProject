@@ -65,7 +65,7 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	  Assert.assertTrue(actualResult);
   }
   
-  @Test (priority = 3)
+  @Test (priority = 3,groups = {"delete"})
   public void verifyToDeleteCreatedExpenseinExpensecategoryPage() throws IOException
   {
 	  lp=new LoginPageClass(driver);

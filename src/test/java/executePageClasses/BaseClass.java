@@ -30,6 +30,7 @@ public static void readProperty() throws IOException
 	f = new FileInputStream(System.getProperty("user.dir")+ "\\src\\test\\resources\\Config.properties");
 	property.load(f);
 }
+
 	@Parameters({"Browser"})
 	@BeforeMethod(groups = {"open"})
 	public void beforeMethod(String browserValue) throws IOException {
