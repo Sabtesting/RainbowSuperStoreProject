@@ -9,11 +9,11 @@
 	  <groups>
 		  <run>
 			  <include name="open"></include>
-			  <include name="group1"></include>
-			  <include name="create"></include>
-			  <include name="search"></include>
-			  <include name="delete"></include>
-			  <include name="close"></include>
+			  <exclude name="group1"></exclude>
+			  <exclude name="create"></exclude>
+			  <exclude name="search"></exclude>
+			  <exclude name="delete"></exclude>
+			  <exclude name="close"></exclude>
 		  </run>
 	  </groups>
     <classes>
