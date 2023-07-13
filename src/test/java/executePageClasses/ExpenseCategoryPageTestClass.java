@@ -14,7 +14,7 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	ExpenseCategoryPageClass ep;
 	
 	
-  @Test (priority = 0,groups = {"group1"})
+  @Test (priority = 1,groups = {"group1"})
   public void verifyExpensecategoryPageIsDisplayedOrNot()
   {
 	  lp=new LoginPageClass(driver);
@@ -30,7 +30,7 @@ public class ExpenseCategoryPageTestClass extends BaseClass{
 	  Assert.assertEquals(actual, expected);
   }
   
-  @Test (priority = 1,groups = {"create"})
+  @Test (priority = 0,groups = {"create"})
   public void verifyToCreateNewExpenseinExpensecategoryPage() throws IOException
   {
 	  lp=new LoginPageClass(driver);

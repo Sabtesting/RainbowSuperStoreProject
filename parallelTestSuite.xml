@@ -4,14 +4,25 @@
 	<listeners>
 		<listener class-name="extendReport.TestListener"></listener>
 	</listeners>
-  <test thread-count="5" name="ParallelTest" parallel="tests">
+  <test thread-count="5" name="ParallelTest1" parallel="tests">
 <parameter name="Browser" value="Chrome"></parameter>
     <classes>
       <class name="executePageClasses.ExpenseCategoryPageTestClass"/>
-       <class name="executePageClasses.ManageExpensePageTestClass"/>
-     <!-- <class name="executePageClasses.LoginPageTestClass"/>
+      <!--  <class name="executePageClasses.ManageExpensePageTestClass"/>
+     <class name="executePageClasses.LoginPageTestClass"/>
       <class name="executePageClasses.HomePageTestClass"/>
       <class name="executePageClasses.ManageProductPageTestClass"/> -->
     </classes>
   </test> <!-- Test -->
+  
+  <test thread-count="5" name="ParallelTest2" parallel="tests">
+<parameter name="Browser" value="Chrome"></parameter>
+    <classes>
+		<class name="executePageClasses.ManageExpensePageTestClass"/>
+      </classes>
+  </test> <!-- Test -->
+  
+  
+  
+  
 </suite> <!-- Suite -->
